@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     float _moveSpeed = 10f;
     [SerializeField, Tooltip("プレイヤーのジャンプのパワー")]
     float _jumpSpeed = 10f;
+    /// <summary>プレイヤーが隠れているかどうか</summary>
+    bool _isHiding = false;
 
     Rigidbody2D _rb;
 
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+
         // ジャンプの処理
         if (Input.GetButtonDown("Jump"))
         {
@@ -27,5 +30,16 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
 
         _rb.velocity = Vector3.right * h + Vector3.up * _rb.velocity.y;
+
+        //現れる処理
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // 隠れる処理
+        if (collision.gameObject.CompareTag("HideObject") && Input.GetButtonDown("Hide"))
+        {
+            _isHiding = true;
+        }
     }
 }
