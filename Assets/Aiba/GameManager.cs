@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
     [Header("制限時間")]
     [SerializeField] float _timeLimit = 60;
     private float _countTime = 0;
+
+    [SerializeField] string _gameOverScenename;
+    [SerializeField] string _gameClearScenename;
 
     [SerializeField] int _playerHp = 3;
 
@@ -47,13 +51,13 @@ public class GameManager : MonoBehaviour
     /// <summary>ゲームオーバー時に呼ぶ</summary>
     public void GameOver()
     {
-        _gameOerPanel.SetActive(true);
+        SceneManager.LoadScene(_gameOverScenename);
     }
 
     /// <summary>クリア時に呼ぶ</summary>
     public void GameClear()
     {
-        _clerPanel.SetActive(true);
+        SceneManager.LoadScene(_gameClearScenename);
     }
 
   public  void DeathPlayer()
