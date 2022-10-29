@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class SceneChange : MonoBehaviour
+public class StartSceneUI : MonoBehaviour
 {
     [SerializeField] string _sceneName;
     [SerializeField] Canvas _rule;
