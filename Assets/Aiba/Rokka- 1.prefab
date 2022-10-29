@@ -346,6 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8956837963692588350}
   - component: {fileID: 7498671224221991826}
+  - component: {fileID: -3085714900112613471}
   m_Layer: 0
   m_Name: Rokka- 1
   m_TagString: HideObject
@@ -400,6 +401,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.59, y: 4.54}
   m_EdgeRadius: 0
+--- !u!114 &-3085714900112613471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707422469375025765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e70643d704f1db4f9b169ee0319a1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeText: {fileID: 0}
+  _timeText2: {fileID: 0}
+  _enemyText: {fileID: 0}
+  _enemyText2: {fileID: 0}
 --- !u!1 &8010967720646475969
 GameObject:
   m_ObjectHideFlags: 0

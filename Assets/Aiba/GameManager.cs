@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
     {
         _gameOerPanel.SetActive(true);
         Destroy(GameObject.FindGameObjectWithTag("Player"));
+
     }
 
     /// <summary>ƒNƒŠƒAŽž‚ÉŒÄ‚Ô</summary>
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     {
         _clerPanel.SetActive(true);
         Destroy(GameObject.FindGameObjectWithTag("Player"));
+        _isGame = false;
     }
 
     public void DeathPlayer()
