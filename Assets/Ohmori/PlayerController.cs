@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool IsHiding { get { return _isHiding; } }
     /// <summary>Œ»İ‰B‚ê‚ç‚ê‚é‚Ì‚©‚Ç‚¤‚©</summary>
     bool _isHidable = false;
+    GameObject _killTarget;
 
     Rigidbody2D _rb;
     SpriteRenderer _sr;
@@ -46,6 +47,11 @@ public class PlayerController : MonoBehaviour
                 // ‰B‚ê‚½uŠÔ‚És‚í‚ê‚éˆ—‚ğ‘‚­
                 _sr.color = Color.clear; // ‰¼‚É“§–¾‚É‚·‚éA”¼“§–¾‚ªŠ®¬Œ`
             }
+
+            if (Input.GetButtonDown("Fire1") && _killTarget)
+            {
+                Destroy(_killTarget);
+            }
         }
         //Œ»‚ê‚éˆ—
         else if (Input.GetButtonDown("Hide"))
@@ -62,10 +68,23 @@ public class PlayerController : MonoBehaviour
         {
             _isHidable = true;
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            _killTarget = collision.gameObject;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _isHidable = false;
+        if (collision.gameObject.CompareTag("HideObject"))
+        {
+            _isHidable = false;
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            _killTarget = null;
+        }
     }
 }
