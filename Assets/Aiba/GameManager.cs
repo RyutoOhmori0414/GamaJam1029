@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static int _enemy = 0;
+    public  int _enemy = 0;
 
     [Header("時間制限のテクストUI")]
     [SerializeField] Text _timeText;
@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     [Header("スタートカウント用のテクストUI")]
     [SerializeField] Text _StartCountText;
 
-    [SerializeField] GameObject _clerPanel;
-    [SerializeField] GameObject _gameOerPanel;
+    [SerializeField] public GameObject _clerPanel;
+    [SerializeField] public GameObject _gameOerPanel;
 
     [Header("制限時間")]
     [SerializeField] float _timeLimit = 60;
-    public static float _countTime = 0;
+    public  float _countTime = 0;
 
     [SerializeField] int _playerHp = 3;
 
@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         TimeTextChange();
+
+        // Debug.Log(_enemy);
 
 
         if (_countTime <= 0)
@@ -63,10 +65,11 @@ public class GameManager : MonoBehaviour
 
     /// <summary>クリア時に呼ぶ</summary>
     public void GameClear()
-    {
+    {   
+        _isGame = false;
         _clerPanel.SetActive(true);
         Destroy(GameObject.FindGameObjectWithTag("Player"));
-        _isGame = false;
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
     }
 
     public void DeathPlayer()

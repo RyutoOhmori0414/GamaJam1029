@@ -740,7 +740,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "AD\nSpace\nF\n\u53F3\u30AF\u30EA\u30C3\u30AF"
+  m_Text: "AD\nSpace\nF\n\u5DE6\u30AF\u30EA\u30C3\u30AF"
 --- !u!222 &902438556
 CanvasRenderer:
   m_ObjectHideFlags: 0
