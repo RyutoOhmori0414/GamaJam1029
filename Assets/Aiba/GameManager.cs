@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-   public static int _enemy  = 0;
+    public static int _enemy = 0;
 
     [Header("時間制限のテクストUI")]
     [SerializeField] Text _timeText;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     [Header("制限時間")]
     [SerializeField] float _timeLimit = 60;
-   public static float _countTime = 0;
+    public static float _countTime = 0;
 
     [SerializeField] int _playerHp = 3;
 
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     {
         _enemy = 0;
         FindObjectOfType<PlayerCounter>().DeathPlayer(_playerHp);
-       StartCoroutine(StartCount());
+        StartCoroutine(StartCount());
         _countTime = _timeLimit;
     }
 
@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour
         TimeTextChange();
 
 
-        if(_countTime<=0)
+        if (_countTime <= 0)
         {
             GameOver();
             _isGame = false;
         }
 
-        if(_playerHp<=0)
+        if (_playerHp <= 0)
         {
             GameOver();
             _isGame = false;
@@ -63,17 +63,17 @@ public class GameManager : MonoBehaviour
     /// <summary>クリア時に呼ぶ</summary>
     public void GameClear()
     {
-        _gameOerPanel.SetActive(true);
+        _clerPanel.SetActive(true);
         Destroy(GameObject.FindGameObjectWithTag("Player"));
     }
 
-  public  void DeathPlayer()
+    public void DeathPlayer()
     {
         _playerHp--;
         FindObjectOfType<PlayerCounter>().DeathPlayer(_playerHp);
     }
 
-    void KillEnemy()
+    public void KillEnemy()
     {
         _enemy++;
     }
