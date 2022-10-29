@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+   public static int _enemy  = 0;
 
     [Header("時間制限のテクストUI")]
     [SerializeField] Text _timeText;
@@ -18,10 +18,7 @@ public class GameManager : MonoBehaviour
 
     [Header("制限時間")]
     [SerializeField] float _timeLimit = 60;
-    private float _countTime = 0;
-
-    [SerializeField] string _gameOverScenename;
-    [SerializeField] string _gameClearScenename;
+   public static float _countTime = 0;
 
     [SerializeField] int _playerHp = 3;
 
@@ -31,6 +28,7 @@ public class GameManager : MonoBehaviour
     public bool IsGame { get => _isGame; set => _isGame = value; }
     void Start()
     {
+        _enemy = 0;
         FindObjectOfType<PlayerCounter>().DeathPlayer(_playerHp);
        StartCoroutine(StartCount());
         _countTime = _timeLimit;
@@ -40,6 +38,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         TimeTextChange();
+
+
+        if(_countTime<=0)
+        {
+            GameOver();
+            _isGame = false;
+        }
 
         if(_playerHp<=0)
         {
@@ -51,13 +56,15 @@ public class GameManager : MonoBehaviour
     /// <summary>ゲームオーバー時に呼ぶ</summary>
     public void GameOver()
     {
-        SceneManager.LoadScene(_gameOverScenename);
+        _gameOerPanel.SetActive(true);
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
     }
 
     /// <summary>クリア時に呼ぶ</summary>
     public void GameClear()
     {
-        SceneManager.LoadScene(_gameClearScenename);
+        _gameOerPanel.SetActive(true);
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
     }
 
   public  void DeathPlayer()
@@ -66,6 +73,10 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<PlayerCounter>().DeathPlayer(_playerHp);
     }
 
+    void KillEnemy()
+    {
+        _enemy++;
+    }
 
     void TimeTextChange()
     {
