@@ -5,7 +5,6 @@ public class SceneChange : MonoBehaviour
 {
     [SerializeField] string _sceneName;
     [SerializeField] Canvas _rule;
-    [SerializeField] Canvas _targetCanvas;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
